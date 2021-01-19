@@ -12,14 +12,14 @@ enum Colors {
     static let background = MTLClearColorMake(0.0, 0.4, 0.21, 1.0)
 }
 
-struct RenderUIView: UIViewRepresentable {
+public struct RenderUIView: UIViewRepresentable {
 
     let mtkView = MTKView()
     /**
      makeUIView sets up the view
             
      */
-    func makeUIView(context: Context) -> some UIView {
+    public func makeUIView(context: Context) -> some UIView {
         mtkView.delegate = context.coordinator
         mtkView.preferredFramesPerSecond = 60
         mtkView.enableSetNeedsDisplay = true
@@ -36,14 +36,14 @@ struct RenderUIView: UIViewRepresentable {
         return mtkView
     }
     
-    func updateUIView(_ uiView: UIViewType, context: Context) {
+    public func updateUIView(_ uiView: UIViewType, context: Context) {
         
     }
     
     /**
      set up the view delegate
      */
-    func makeCoordinator() -> DummyRenderer {
+    public func makeCoordinator() -> DummyRenderer {
         DummyRenderer(self)
     }
     

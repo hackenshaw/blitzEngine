@@ -7,7 +7,7 @@
 
 import MetalKit
 
-class DummyRenderer : NSObject, MTKViewDelegate {
+public class DummyRenderer : NSObject, MTKViewDelegate {
     var parent: RenderUIView
     var metalDevice: MTLDevice!
     var metalCommandQueue: MTLCommandQueue!
@@ -36,10 +36,10 @@ class DummyRenderer : NSObject, MTKViewDelegate {
         buildPipelineState()
     }
 
-    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+    public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
     }
 
-    func draw(in view: MTKView) {
+    public func draw(in view: MTKView) {
         // Get the current drawable and descriptor
         guard let drawable = view.currentDrawable,
               let pipelineState = pipelineState else {
