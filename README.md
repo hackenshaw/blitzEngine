@@ -1,3 +1,3 @@
 # blitzEngine
 
-A description of this package.
+An iOS/iPadOS 3D Engine
