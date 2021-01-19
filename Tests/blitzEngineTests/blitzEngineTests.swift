@@ -1,0 +1,15 @@
+import XCTest
+@testable import blitzEngine
+
+final class blitzEngineTests: XCTestCase {
+    func testExample() {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct
+        // results.
+        XCTAssertEqual(blitzEngine().text, "Hello, World!")
+    }
+
+    static var allTests = [
+        ("testExample", testExample),
+    ]
+}
