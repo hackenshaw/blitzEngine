@@ -23,7 +23,7 @@ public class DummyRenderer : NSObject, MTKViewDelegate {
     
     
     
-    init(_ parent: RenderUIView) {
+    public init(_ parent: RenderUIView) {
         self.parent = parent
         if let metalDevice = MTLCreateSystemDefaultDevice() {
             self.metalDevice = metalDevice

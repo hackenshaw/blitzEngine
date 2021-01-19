@@ -15,6 +15,11 @@ enum Colors {
 public struct RenderUIView: UIViewRepresentable {
 
     let mtkView = MTKView()
+    
+    public init(){
+        
+    }
+    
     /**
      makeUIView sets up the view
             
