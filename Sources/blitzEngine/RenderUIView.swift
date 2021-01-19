@@ -9,7 +9,7 @@ import SwiftUI
 import MetalKit
 
 enum Colors {
-    static let background = MTLClearColorMake(0.0, 0.4, 0.21, 1.0)
+    static let background = MTLClearColorMake(0.9, 0.9, 0.9, 1.0)
 }
 
 public struct RenderUIView: UIViewRepresentable {
