@@ -77,7 +77,7 @@ final class Examples {
       print("Could not load meshes from model")
     }
 
-    guard let bunnyMetalTexture = Texture.loadMetalTexture(device: renderer.device, named: "bricks") else {
+    /*guard let bunnyMetalTexture = Texture.loadMetalTexture(device: renderer.device, named: "bricks") else {
       return
     }
 
@@ -91,15 +91,18 @@ final class Examples {
     }
 
     let bunnyTexture = Texture(mtlTexture: bunnyMetalTexture, samplerState: sampler)
+ */
 
-    let bunnyMaterial = Material(
+    var texture: Texture?
+    let bunnyMaterial = Material.createBasic(renderer: renderer, texture0: texture)
+    /*let bunnyMaterial = Material(
       renderer: renderer,
       vertexName: "basic_vertex",
       fragmentName: "texture_fragment",
       vertexDescriptor: metalVertexDescriptor,
-      texture0: bunnyTexture,
+      texture0: texture,
       texture1: nil
-    )
+    )*/
 
     let bunnyMesh = Mesh(mtkMesh: meshes[0])
     bunnyMesh.material = bunnyMaterial
