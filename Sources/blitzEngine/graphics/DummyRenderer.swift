@@ -74,9 +74,11 @@ public class DummyRenderer : NSObject, MTKViewDelegate {
     }
     
     private func buildPipelineState() {
-        let library = metalDevice.makeDefaultLibrary()
-        let vertexFunction = library?.makeFunction(name: "vertex_shader")
-        let fragmentFunction = library?.makeFunction(name: "fragment_shader")
+        guard let library = try? metalDevice.makeDefaultLibrary(bundle: Bundle.module)
+        else { fatalError("Unable to create default library") }
+        
+        let vertexFunction = library.makeFunction(name: "vertex_shader")
+        let fragmentFunction = library.makeFunction(name: "fragment_shader")
         
         let pipelineDescriptor = MTLRenderPipelineDescriptor()
         pipelineDescriptor.vertexFunction = vertexFunction
