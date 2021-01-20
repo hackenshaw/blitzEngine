@@ -52,6 +52,7 @@ public struct RenderUIView: UIViewRepresentable {
      */
     public func makeCoordinator() -> Renderer? {
         //Renderer(self.mtkView)!
+        //TODO: move this code into app
         guard let renderer = Renderer(self.mtkView) else {
           print("Renderer cannot be initialized")
           return nil
