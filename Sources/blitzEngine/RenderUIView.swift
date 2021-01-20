@@ -20,14 +20,6 @@ public struct RenderUIView: UIViewRepresentable {
     
     public init(){
         
-        guard let renderer = Renderer(mtkView) else {
-          print("Renderer cannot be initialized")
-          return
-        }
-        examples = Examples(renderer: renderer)
-        
-        examples.createSceneSingleCube(textured: false)
-        
     }
     
     /**
@@ -58,8 +50,16 @@ public struct RenderUIView: UIViewRepresentable {
     /**
      set up the view delegate
      */
-    public func makeCoordinator() -> Renderer {
-        Renderer(self.mtkView)!
+    public func makeCoordinator() -> Renderer? {
+        //Renderer(self.mtkView)!
+        guard let renderer = Renderer(self.mtkView) else {
+          print("Renderer cannot be initialized")
+          return nil
+        }
+        let examples = Examples(renderer: renderer)
+        
+        examples.createSceneSingleCube(textured: false)
+        return renderer
     }
     
     
