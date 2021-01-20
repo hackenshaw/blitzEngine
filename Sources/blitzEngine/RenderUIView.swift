@@ -15,8 +15,13 @@ enum Colors {
 public struct RenderUIView: UIViewRepresentable {
 
     let mtkView = MTKView()
+    private var renderer: Renderer!
+    private var examples: Examples!
     
     public init(){
+        
+        renderer.scene.camera.origin = [0, 0, 5]
+        examples.createSceneBunny()
         
     }
     
