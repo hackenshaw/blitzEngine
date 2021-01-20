@@ -20,6 +20,12 @@ public struct RenderUIView: UIViewRepresentable {
     
     public init(){
         
+        guard let renderer = Renderer(mtkView) else {
+          print("Renderer cannot be initialized")
+          return
+        }
+        examples = Examples(renderer: renderer)
+        
         renderer.scene.camera.origin = [0, 0, 5]
         examples.createSceneBunny()
         
