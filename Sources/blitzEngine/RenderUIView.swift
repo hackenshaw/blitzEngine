@@ -48,8 +48,8 @@ public struct RenderUIView: UIViewRepresentable {
     /**
      set up the view delegate
      */
-    public func makeCoordinator() -> DummyRenderer {
-        DummyRenderer(self)
+    public func makeCoordinator() -> Renderer {
+        Renderer(self.mtkView)!
     }
     
     
