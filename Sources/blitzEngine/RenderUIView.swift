@@ -15,6 +15,8 @@ enum Colors {
 public struct RenderUIView: UIViewRepresentable {
 
     let mtkView = MTKView()
+    private var renderer: Renderer!
+    private var examples: Examples!
     
     public init(){
         
@@ -48,8 +50,17 @@ public struct RenderUIView: UIViewRepresentable {
     /**
      set up the view delegate
      */
-    public func makeCoordinator() -> DummyRenderer {
-        DummyRenderer(self)
+    public func makeCoordinator() -> Renderer? {
+        //Renderer(self.mtkView)!
+        //TODO: move this code into app
+        guard let renderer = Renderer(self.mtkView) else {
+          print("Renderer cannot be initialized")
+          return nil
+        }
+        let examples = Examples(renderer: renderer)
+        
+        examples.createSceneSingleCube(textured: false)
+        return renderer
     }
     
     
