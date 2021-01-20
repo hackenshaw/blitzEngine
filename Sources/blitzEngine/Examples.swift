@@ -12,6 +12,7 @@ final class Examples {
   }
     
     func createSceneSingleCube(textured: Bool) {
+        print("creating cube scene")
       renderer.scene.root.clearAllChildren()
 
       let dimension: Float = 3.0
