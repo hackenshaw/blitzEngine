@@ -13,7 +13,7 @@ vertex float4 vertex_shader(const device packed_float3 *vertices [[ buffer(0) ]]
 }
 
 fragment half4 fragment_shader() {
-    return half4(0.85, 0.12, 0.73, 1); //peach puff
+    return half4(1, 0.88, 0.63, 1); //pastel colour
 }
 
 
