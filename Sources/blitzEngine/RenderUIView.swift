@@ -26,8 +26,7 @@ public struct RenderUIView: UIViewRepresentable {
         }
         examples = Examples(renderer: renderer)
         
-        renderer.scene.camera.origin = [0, 0, 5]
-        examples.createSceneBunny()
+        examples.createSceneSingleCube(textured: false)
         
     }
     
