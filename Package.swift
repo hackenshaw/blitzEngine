@@ -24,7 +24,7 @@ let package = Package(
         .target(
             name: "blitzEngine",
             dependencies: [],
-            resources: [.process("Shaders.metal"),.process("bunny.obj")]),
+            resources: [.process("Shaders.metal")]),
         .testTarget(
             name: "blitzEngineTests",
             dependencies: ["blitzEngine"]),
