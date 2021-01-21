@@ -57,10 +57,12 @@ final class Examples {
       cubeMesh.material = material
       let node = Node(mesh: cubeMesh)
       node.update = { (time: Time, node: Node) in
+        print("update orientation...")
         node.orientation *= Quaternion(
           angle: Math.toRadians(30.0) * Float(time.updateTime),
           axis: [0.5, 1, -1]
         )
+        
       }
       renderer.scene.root.addChild(node)
     }
