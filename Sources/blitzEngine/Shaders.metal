@@ -1,4 +1,10 @@
-// File for Metal kernel and shader functions
+//
+//  Shaders.metal
+//  blitzEngine
+//
+//  Created by Medhat Riad on 20/01/2021.
+//
+//  File for Metal kernel and shader functions
 
 #include <metal_stdlib>
 #include <simd/simd.h>
