@@ -12,7 +12,7 @@ enum Colors {
     static let background = MTLClearColorMake(0.9, 0.9, 0.9, 1.0)
 }
 
-public struct RenderUIView: UIViewRepresentable {
+public final class RenderUIView: UIViewRepresentable {
 
     let mtkView = MTKView()
     private var renderer: Renderer!
@@ -29,16 +29,15 @@ public struct RenderUIView: UIViewRepresentable {
     public func makeUIView(context: Context) -> some UIView {
         mtkView.delegate = context.coordinator
         mtkView.preferredFramesPerSecond = 60
-        mtkView.enableSetNeedsDisplay = true
+        //mtkView.enableSetNeedsDisplay = true
                 
         if let metalDevice = MTLCreateSystemDefaultDevice() {
             mtkView.device = metalDevice
         }
         
         mtkView.framebufferOnly = false
-        mtkView.clearColor = Colors.background
+        //mtkView.clearColor = Colors.background
         mtkView.drawableSize = mtkView.frame.size
-        mtkView.enableSetNeedsDisplay = true
         
         return mtkView
     }
@@ -53,14 +52,16 @@ public struct RenderUIView: UIViewRepresentable {
     public func makeCoordinator() -> Renderer? {
         //Renderer(self.mtkView)!
         //TODO: move this code into app
-        guard let renderer = Renderer(self.mtkView) else {
+        guard let renderer = Renderer(mtkView) else {
           print("Renderer cannot be initialized")
           return nil
         }
-        let examples = Examples(renderer: renderer)
+        self.renderer = renderer
+        examples = Examples(renderer: self.renderer)
+        self.renderer.mtkView(mtkView, drawableSizeWillChange: mtkView.drawableSize)
         
         examples.createSceneSingleCube(textured: false)
-        return renderer
+        return self.renderer
     }
     
     
