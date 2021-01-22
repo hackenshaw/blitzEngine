@@ -28,7 +28,7 @@ public final class RenderUIView: UIViewRepresentable {
      */
     public func makeUIView(context: Context) -> some UIView {
         mtkView.delegate = context.coordinator
-        mtkView.preferredFramesPerSecond = 60
+        mtkView.preferredFramesPerSecond = 120
         //mtkView.enableSetNeedsDisplay = true
                 
         if let metalDevice = MTLCreateSystemDefaultDevice() {
