@@ -23,12 +23,12 @@ final class Examples {
         width: dimension,
         height: dimension,
         length: dimension,
-        topColor: UIColor.red.cgColor,
-        rightColor: UIColor.green.cgColor,
-        bottomColor: UIColor.orange.cgColor,
-        leftColor: UIColor.blue.cgColor,
-        frontColor: UIColor.yellow.cgColor,
-        backColor: UIColor.purple.cgColor
+        topColor: UIColor(red: 1, green: 0.6, blue: 0.6, alpha: 1.0).cgColor,
+        rightColor: UIColor(red: 0.6, green: 1, blue: 0.6, alpha: 1.0).cgColor,
+        bottomColor: UIColor(red: 1, green: 0.8, blue: 0.6, alpha: 1.0).cgColor,
+        leftColor: UIColor(red: 0.6, green: 0.6, blue: 1, alpha: 1.0).cgColor,
+        frontColor: UIColor(red: 1, green: 1, blue: 0.6, alpha: 1.0).cgColor,
+        backColor: UIColor(red: 0.8, green: 0.6, blue: 1, alpha: 1.0).cgColor
       ) else {
         print("Failed to create the cuboid mesh")
         return

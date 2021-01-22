@@ -14,9 +14,9 @@ public final class Scene {
 
   /// A color that will be used as the background for every new frame
   public var clearColor: MTLClearColor = MTLClearColor(
-    red: 0.0,
-    green: 0.0,
-    blue: 0.0,
+    red: 0.8,
+    green: 0.8,
+    blue: 0.8,
     alpha: 1.0
   )
 
