@@ -39,7 +39,7 @@ public class Renderer: NSObject {
     public init?(name: String) {
         //mtkView.enableSetNeedsDisplay = true
         mtkView.preferredFramesPerSecond = 120
-        //mtkView.framebufferOnly = false
+        mtkView.framebufferOnly = false
         mtkView.drawableSize = mtkView.frame.size
         
         guard let device = MTLCreateSystemDefaultDevice() else {
