@@ -17,6 +17,7 @@ public class Renderer: NSObject {
   // know what is the first buffer they can use safely
     public static let firstFreeVertexBufferIndex = 2
     
+    let mtkView = MTKView()
     public let device: MTLDevice!
     public let library: MTLLibrary!
     public let commandQueue: MTLCommandQueue!
@@ -32,11 +33,15 @@ public class Renderer: NSObject {
 
     private var lastTime: TimeInterval?
     private let creationTime: TimeInterval
-    private let mtkView: MTKView
     private let uniformBuffers: BufferManager
     
-    init?(_ mtkView: MTKView) {
-
+    
+    init?(name: String) {
+        //mtkView.enableSetNeedsDisplay = true
+        mtkView.preferredFramesPerSecond = 120
+        //mtkView.framebufferOnly = false
+        mtkView.drawableSize = mtkView.frame.size
+        
         guard let device = MTLCreateSystemDefaultDevice() else {
         print("Metal is not supported")
         return nil
@@ -57,8 +62,6 @@ public class Renderer: NSObject {
         }
         self.commandQueue = commandQueue
 
-
-        self.mtkView = mtkView
         mtkView.device = device
 
         mtkView.preferredFramesPerSecond = 60
@@ -82,6 +85,8 @@ public class Renderer: NSObject {
 
         creationTime = Date.timeIntervalSinceReferenceDate
         super.init()
+        
+        mtkView.delegate = self
     }
     
     func defaultPipelineDescriptor() -> MTLRenderPipelineDescriptor {
@@ -93,13 +98,21 @@ public class Renderer: NSObject {
 }
 
 extension Renderer: MTKViewDelegate {
+    
+    
 
-  /// This is called anytime the view size changes. If this happens we need to update
-  /// the camera values accordingly
-  public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-    scene.camera.aspectRatio = Float(size.width / size.height)
-    onViewportSizeChanged?(size)
-  }
+    
+    public func getUIView() -> UIView{
+        return mtkView;
+    }
+    
+    
+    /// This is called anytime the view size changes. If this happens we need to update
+    /// the camera values accordingly
+    public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+        scene.camera.aspectRatio = Float(size.width / size.height)
+        onViewportSizeChanged?(size)
+      }
 
   /// Called every frame
   public func draw(in view: MTKView) {
