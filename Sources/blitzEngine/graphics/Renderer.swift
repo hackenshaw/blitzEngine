@@ -36,7 +36,7 @@ public class Renderer: NSObject {
     private let uniformBuffers: BufferManager
     
     
-    init?(name: String) {
+    public init?(name: String) {
         //mtkView.enableSetNeedsDisplay = true
         mtkView.preferredFramesPerSecond = 120
         //mtkView.framebufferOnly = false
