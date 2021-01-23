@@ -7,6 +7,10 @@
 
 import MetalKit
 
+enum Colors {
+    static let background = MTLClearColorMake(0.9, 0.9, 0.9, 1.0)
+}
+
 public class DummyRenderer : NSObject, MTKViewDelegate {
     var parent: RenderUIView
     var metalDevice: MTLDevice!
