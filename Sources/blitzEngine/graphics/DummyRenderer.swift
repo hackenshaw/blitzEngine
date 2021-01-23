@@ -12,7 +12,7 @@ enum Colors {
 }
 
 public class DummyRenderer : NSObject, MTKViewDelegate {
-    var parent: RenderUIView
+    var parent: String
     var metalDevice: MTLDevice!
     var metalCommandQueue: MTLCommandQueue!
     
@@ -27,7 +27,7 @@ public class DummyRenderer : NSObject, MTKViewDelegate {
     
     
     
-    public init(_ parent: RenderUIView) {
+    public init(_ parent: String) {
         self.parent = parent
         if let metalDevice = MTLCreateSystemDefaultDevice() {
             self.metalDevice = metalDevice
